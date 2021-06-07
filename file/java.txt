@@ -1,0 +1,85 @@
+import java.util.*;
+
+public class Personne {
+	
+  //***********************
+  // Données membres
+  //***********************
+  
+  private String sexe;
+  private String nom;
+  private String prenom;
+  private int AnneeNaissance;
+  private String EtatCivil;
+  
+  //***********************
+  // Constructeurs
+  //***********************
+  
+  /**
+   * Constructeur par défaut
+   * Une personne par défaut se nomme 
+   * "Anonyme", son prénom, son sexe 
+   * et son etat civil sont des chaines
+   * vides
+   */
+  public Personne(){
+  	sexe="";
+  	nom="Anonyme";
+  	prenom="";
+  	AnneeNaissance=2007;
+  	EtatCivil="";
+  }
+  /**
+   * Constructeur par copie
+   */
+  public Personne(Personne p){
+  	sexe = p.sexe;
+  	nom = p.nom;
+  	prenom = p.prenom ;
+  	AnneeNaissance = p.AnneeNaissance;
+  	EtatCivil = p.EtatCivil;
+  }
+  /**
+   * Constructeur standard d'une personne
+   */
+  public Personne(String s, String n, String p, int a, String e) {
+  	sexe=s;
+  	nom=n;
+  	prenom=p;
+  	AnneeNaissance=a;
+  	EtatCivil=e;
+  }
+
+
+  /**
+   *  Les méthodes
+   */
+  public String retourneInfo() {
+  	String Info;
+  	if(sexe.equals("M."))
+  	  Info = sexe + " " + nom + " " + prenom + " est ne en " + AnneeNaissance + ", il est " + EtatCivil;
+  	else
+  	  Info = sexe + " " + nom + " " + prenom + " est nee en " + AnneeNaissance + ", elle est " + EtatCivil;  
+    return Info;
+  }
+  
+  public int age(int annee) {
+      Calendar now = Calendar.getInstance();          	
+	int a = now.get(Calendar.YEAR); 
+  	return a-annee; 	
+  }
+  
+  public static void main(String[] args){
+  	Personne P1 = new Personne("M.","ZEAYBI","MOHAMED",1997,"Celibataire");
+  	Personne P2 = new Personne("Mlle","TOUIHRI","EMNA",1997,"Celibataire");
+  	Personne P3 = new Personne("Mlle","KHEMIRI","GHAYA",1997,"Celibataire");
+  	
+  	System.out.println(P1.retourneInfo());
+  	System.out.println("Son age:"+P1.age(P1.AnneeNaissance));
+  	System.out.println(P2.retourneInfo());
+  	System.out.println("Son age:"+P2.age(P2.AnneeNaissance));
+	System.out.println(P3.retourneInfo());
+	System.out.println("Son age:"+P3.age(P3.AnneeNaissance));
+  }
+}
